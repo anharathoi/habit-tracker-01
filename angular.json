@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "habit-tracker"
+    }
+  },
+  "defaultProject": "habit-tracker",
+  "cli": {
+    "analytics": false
+  }
 }
