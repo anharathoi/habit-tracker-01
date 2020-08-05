@@ -1,0 +1,23 @@
+table {
+  text-align: center;
+  margin: 0 20px;
+}
+
+.btn {
+  border: none;
+  display: flex;
+  justify-content: center;
+  background:#a0dcb3;
+  margin: 20px;
+}
+
+.rounded {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+button span {
+  font-size: 20px;
+  color: white;
+}

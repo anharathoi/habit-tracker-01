@@ -1,0 +1,19 @@
+<table class="table is-bordered">
+  <tr>
+    <th></th>
+    <th *ngFor="let day of days">{{day}}</th>
+  </tr>
+  <ng-container *ngFor="let habit of habits">
+    <tr>
+      <th>{{habit}}</th>
+      <ng-container>
+        <td *ngFor="let day of days">
+          <input type="checkbox">
+        </td>
+      </ng-container>
+    </tr>
+  </ng-container>
+  <button class="btn rounded" (click)="openModal()"><span>+</span></button>
+</table>
+
+<app-habits-modal [modalOpen]="shouldModalOpen" (close)="closeModal()"></app-habits-modal>
