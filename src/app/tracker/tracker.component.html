@@ -16,4 +16,4 @@
   <button class="btn rounded" (click)="openModal()"><span>+</span></button>
 </table>
 
-<app-habits-modal [modalOpen]="shouldModalOpen" (close)="closeModal()"></app-habits-modal>
+<app-habits-modal (dataHasUpdated)="onDataUpdate($event)" [modalOpen]="shouldModalOpen" (shouldModalClose)="closeModal()"></app-habits-modal>

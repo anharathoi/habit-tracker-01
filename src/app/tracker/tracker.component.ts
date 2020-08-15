@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TrackerComponent implements OnInit {
   shouldModalOpen = false;
-  habits: any; // should change as any is not good
+  habits = [];
   userId = 1;
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   openModal() {
     this.shouldModalOpen = true;
@@ -21,9 +21,13 @@ export class TrackerComponent implements OnInit {
     this.shouldModalOpen = false;
   }
 
+  onDataUpdate(data) {
+    this.habits.push(data);
+  }
+
   ngOnInit(): void {
     this.http.get(`http://localhost:3000/users/${this.userId}/habits`)
-    .subscribe(habits => {
+    .subscribe((habits: []) => {
       this.habits = habits;
     });
   }

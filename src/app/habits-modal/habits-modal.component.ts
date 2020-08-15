@@ -11,7 +11,8 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class HabitsModalComponent implements OnInit {
   @Input() modalOpen = false;
-  @Output('close') shouldModalClose = new EventEmitter();
+  @Output() shouldModalClose = new EventEmitter();
+  @Output() dataHasUpdated = new EventEmitter();
 
   userId = 1;
   habitForm = this.fb.group({
@@ -25,16 +26,14 @@ export class HabitsModalComponent implements OnInit {
     private http: HttpClient
   ) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   saveHabit() {
     this.http.post(this.habitUrl, this.habitForm.value)
     .subscribe(data => {
-      console.log(JSON.stringify(data) + "has been saved")
       this.modalOpen = false;
       this.shouldModalClose.emit(this.modalOpen);
+      this.dataHasUpdated.emit(data);
     });
   }
 
