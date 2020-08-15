@@ -17,6 +17,10 @@ export class HabitsModalComponent implements OnInit {
 
   }
 
+  saveHabit() {
+    console.log(this.habitInput.value);
+  }
+
   closeModal() {
     this.modalOpen = false;
     this.shouldModalClose.emit(this.modalOpen);

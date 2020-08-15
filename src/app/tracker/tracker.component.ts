@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tracker',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackerComponent implements OnInit {
   shouldModalOpen = false;
-  habits = ['Piano', 'AWS', 'Exercise', 'Book'];
+  habits: any; // should change as any is not good
+  userId: number;
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   openModal() {
-    console.log(this.shouldModalOpen)
     this.shouldModalOpen = true;
   }
 
@@ -22,6 +23,11 @@ export class TrackerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.http.get('http://localhost:3000/habits')
+    .subscribe(habits => {
+      console.log(habits);
+      this.habits = habits;
+    });
   }
 
 }

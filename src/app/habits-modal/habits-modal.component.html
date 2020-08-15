@@ -9,7 +9,7 @@
       <input [formControl]="habitInput" type="text" name="" id="">
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+      <button class="button is-success" (click)="saveHabit()">Save changes</button>
       <button class="button"(click)="closeModal()" >Cancel</button>
     </footer>
   </div>
