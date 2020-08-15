@@ -5,12 +5,14 @@
       <p class="modal-card-title">Modal title</p>
       <button class="delete" aria-label="close" (click)="closeModal()"></button>
     </header>
-    <section class="modal-card-body">
-      <input [formControl]="habitInput" type="text" name="" id="">
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success" (click)="saveHabit()">Save changes</button>
-      <button class="button"(click)="closeModal()" >Cancel</button>
-    </footer>
+    <form [formGroup]="habitForm">
+      <section class="modal-card-body">
+        <input formControlName="habit" type="text" name="" id="">
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" (click)="saveHabit()">Save changes</button>
+        <button class="button"(click)="closeModal()" >Cancel</button>
+      </footer>
+    </form>
   </div>
 </div>

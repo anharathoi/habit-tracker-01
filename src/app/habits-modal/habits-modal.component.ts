@@ -1,5 +1,8 @@
 import { Component, OnInit, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-habits-modal',
@@ -10,15 +13,29 @@ export class HabitsModalComponent implements OnInit {
   @Input() modalOpen = false;
   @Output('close') shouldModalClose = new EventEmitter();
 
-  habitInput = new FormControl('');
-  constructor(public elementRef: ElementRef) { }
+  userId = 1;
+  habitForm = this.fb.group({
+    habit: ''
+  });
+  habitUrl = `http://localhost:3000/users/${this.userId}/habits`
+
+  constructor(
+    public elementRef: ElementRef,
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
 
   }
 
   saveHabit() {
-    console.log(this.habitInput.value);
+    this.http.post(this.habitUrl, this.habitForm.value)
+    .subscribe(data => {
+      console.log(JSON.stringify(data) + "has been saved")
+      this.modalOpen = false;
+      this.shouldModalClose.emit(this.modalOpen);
+    });
   }
 
   closeModal() {

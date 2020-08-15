@@ -46,6 +46,11 @@
       "id": 7,
       "habit": "AWS learning",
       "userId": "1"
+    },
+    {
+      "habit": "new",
+      "userId": "1",
+      "id": 8
     }
   ],
   "trackers": [
