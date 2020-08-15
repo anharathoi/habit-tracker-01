@@ -43,3 +43,7 @@ End points:
       <td>data 10</td>
     </tr>
   </table>
+
+
+<!-- Next Tasks -->
+- When a new habit is added, the page needs a manual refresh
