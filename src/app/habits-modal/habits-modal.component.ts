@@ -1,8 +1,6 @@
 import { Component, OnInit, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-habits-modal',

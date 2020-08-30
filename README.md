@@ -47,7 +47,17 @@ End points:
 
 ### Next Tasks
 - <del>When a new habit is added, the page needs a manual refresh </del>
-- When a task is clicked checked; there should be a entry for trackers
+- <del>When a task is clicked checked; there should be a entry for trackers</del>
+- Refactor existing code
+  - Need to add find Tracker method. At the moment having asynchornous issues when trying to separate it out of the updateStatus method
+- Currently on page refresh, checked status is gone. need to fix that
+- If tracker created and status false; red checkbox/ cross
+- Add styling for checked unchecked status
+- Add tests
+- Add pipeline
+- Add backend
+
+### Test cases
 
 
 

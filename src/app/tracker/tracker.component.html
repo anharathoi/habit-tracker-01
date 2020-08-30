@@ -8,7 +8,7 @@
       <th>{{habit.habit}}</th>
       <ng-container>
         <td *ngFor="let day of days">
-          <input type="checkbox" (change)="updateTaskStatus($event, habit, day)">
+          <input type="checkbox" [ngClass]="" (change)="updateTaskStatus($event.target.checked, habit, day)">
         </td>
       </ng-container>
     </tr>
