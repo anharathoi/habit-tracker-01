@@ -12,7 +12,9 @@ export class TrackerComponent implements OnInit {
   habits = [];
   userId = 1;
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-
+  checkedTasks = [];
+  trackers = [];
+  trackerExists: boolean;
   constructor(private http: HttpClient) {}
 
   openModal() {
@@ -52,6 +54,7 @@ export class TrackerComponent implements OnInit {
       completionStatus: taskStatus
     })
     .subscribe( newHabitTracker  => {
+      this.trackers.push(newHabitTracker);
       console.log("New tracker created: ", newHabitTracker );
     });
   }
@@ -64,6 +67,7 @@ export class TrackerComponent implements OnInit {
         return tracker.date === date && tracker.habitId === habit.id;
       });
       if (habitTracker) {
+        this.trackerExists = true;
         this.http.patch(`http://localhost:3000/trackers/${habitTracker.id}`, {
           completionStatus: taskStatus
         })
@@ -76,11 +80,30 @@ export class TrackerComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.http.get(`http://localhost:3000/users/${this.userId}/habits`)
-    .subscribe((habits: []) => {
-      this.habits = habits;
+  findTracker(habit, date) {
+    let trackerExits;
+    if (!this.trackers){
+      return;
+    }
+    trackerExits = this.trackers.find(tracker => {
+      return tracker.habitId === habit.id && tracker.date === date;
     });
+    console.log(trackerExits)
+    return trackerExits;
   }
 
+  ngOnInit(): void {
+    this.http.get(`http://localhost:3000/users/${this.userId}/habits`)
+    .subscribe((habits: IHabit[]) => {
+      this.habits = habits;
+      this.habits.forEach(habit => {
+        this.http.get(`http://localhost:3000/habits/${habit.id}/trackers`)
+        .subscribe((trackers: ITracker[]) => {
+          trackers.forEach((tracker: ITracker) => {
+            this.trackers.push(tracker);
+          });
+        });
+      });
+    });
+  }
 }
