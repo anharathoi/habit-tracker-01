@@ -45,5 +45,10 @@ End points:
   </table>
 
 
-<!-- Next Tasks -->
-- When a new habit is added, the page needs a manual refresh
+### Next Tasks
+- <del>When a new habit is added, the page needs a manual refresh </del>
+- When a task is clicked checked; there should be a entry for trackers
+
+
+
+
