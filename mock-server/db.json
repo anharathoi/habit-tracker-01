@@ -50,22 +50,28 @@
   ],
   "trackers": [
     {
-      "id": "1",
-      "habitId": "1",
-      "date": "19/07/2020",
-      "completionStatus": false
+      "habitId": 1,
+      "date": "Monday",
+      "completionStatus": true,
+      "id": 1
     },
     {
-      "id": "2",
-      "habitId": "1",
-      "date": "20/07/2020",
-      "completionStatus": true
+      "habitId": 1,
+      "date": "Tuesday",
+      "completionStatus": false,
+      "id": 2
     },
     {
-      "id": "3",
-      "habitId": "2",
-      "date": "20/07/2020",
-      "completionStatus": false
+      "habitId": 3,
+      "date": "Monday",
+      "completionStatus": false,
+      "id": 3
+    },
+    {
+      "habitId": 3,
+      "date": "Tuesday",
+      "completionStatus": true,
+      "id": 4
     }
   ]
 }
