@@ -7,6 +7,7 @@
     "mock-server:start": "./node_modules/.bin/json-server --watch mock-server/db.json",
     "build": "ng build",
     "test": "ng test",
+    "unit-test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
