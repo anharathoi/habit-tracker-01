@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HabitsModalComponent } from './habits-modal.component';
+import { FormBuilder } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HabitsModalComponent', () => {
   let component: HabitsModalComponent;
@@ -8,7 +10,9 @@ describe('HabitsModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HabitsModalComponent ]
+      declarations: [ HabitsModalComponent ],
+      providers: [FormBuilder],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   }));
